@@ -25,21 +25,21 @@ const ContactButtons = ({ carName, carPrice }: ContactButtonsProps) => {
   };
   
   return (
-    <div className="flex gap-3">
+    <div className="flex gap-4">
       <button
         onClick={handleWhatsApp}
-        className="flex-1 bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white px-4 py-3 rounded-xl flex items-center justify-center gap-2 transition-all transform hover:scale-105 shadow-lg hover:shadow-xl"
+        className="flex-1 bg-gradient-to-br from-emerald-600 via-green-600 to-emerald-700 hover:from-emerald-700 hover:via-green-700 hover:to-emerald-800 text-white px-6 py-4 rounded-2xl flex items-center justify-center gap-3 transition-all duration-500 transform hover:scale-[1.02] shadow-2xl hover:shadow-emerald-500/30 font-bold border border-emerald-500/30 backdrop-blur-sm group/whats"
       >
-        <MessageCircle className="h-4 w-4" />
-        <span className="font-medium">{t('contact.whatsapp')}</span>
+        <MessageCircle className="h-5 w-5 group-hover/whats:scale-110 transition-transform duration-300" />
+        <span>{t('contact.whatsapp')}</span>
       </button>
       
       <button
         onClick={handleiMessage}
-        className="flex-1 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white px-4 py-3 rounded-xl flex items-center justify-center gap-2 transition-all transform hover:scale-105 shadow-lg hover:shadow-xl"
+        className="flex-1 bg-gradient-to-br from-blue-600 via-indigo-600 to-blue-700 hover:from-blue-700 hover:via-indigo-700 hover:to-blue-800 text-white px-6 py-4 rounded-2xl flex items-center justify-center gap-3 transition-all duration-500 transform hover:scale-[1.02] shadow-2xl hover:shadow-blue-500/30 font-bold border border-blue-500/30 backdrop-blur-sm group/imsg"
       >
-        <Phone className="h-4 w-4" />
-        <span className="font-medium">{t('contact.imessage')}</span>
+        <Phone className="h-5 w-5 group-hover/imsg:scale-110 transition-transform duration-300" />
+        <span>{t('contact.imessage')}</span>
       </button>
     </div>
   );
