@@ -3,8 +3,10 @@ import React, { useState } from 'react';
 import Header from '../components/Header';
 import CarCard from '../components/CarCard';
 import { Search, Filter } from 'lucide-react';
+import { useLanguage } from '../contexts/LanguageContext';
 
 const Catalog = () => {
+  const { t } = useLanguage();
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('Todos');
   
@@ -14,7 +16,6 @@ const Catalog = () => {
       name: "Civic",
       brand: "Honda",
       year: 2023,
-      price: "180",
       image: "https://images.unsplash.com/photo-1619976215249-93c5c7e9bb3e?w=500",
       passengers: 5,
       fuel: "Flex",
@@ -26,7 +27,6 @@ const Catalog = () => {
       name: "HB20",
       brand: "Hyundai",
       year: 2022,
-      price: "120",
       image: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=500",
       passengers: 5,
       fuel: "Flex",
@@ -38,7 +38,6 @@ const Catalog = () => {
       name: "Corolla",
       brand: "Toyota",
       year: 2023,
-      price: "200",
       image: "https://images.unsplash.com/photo-1621007947382-bb3c3994e3fb?w=500",
       passengers: 5,
       fuel: "Híbrido",
@@ -50,7 +49,6 @@ const Catalog = () => {
       name: "X1",
       brand: "BMW",
       year: 2022,
-      price: "350",
       image: "https://images.unsplash.com/photo-1555215695-3004980ad54e?w=500",
       passengers: 5,
       fuel: "Gasolina",
@@ -62,7 +60,6 @@ const Catalog = () => {
       name: "Compass",
       brand: "Jeep",
       year: 2023,
-      price: "280",
       image: "https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=500",
       passengers: 5,
       fuel: "Flex",
@@ -74,7 +71,6 @@ const Catalog = () => {
       name: "Polo",
       brand: "Volkswagen",
       year: 2022,
-      price: "140",
       image: "https://images.unsplash.com/photo-1502877338535-766e1452684a?w=500",
       passengers: 5,
       fuel: "Flex",
@@ -83,7 +79,12 @@ const Catalog = () => {
     }
   ];
   
-  const categories = ['Todos', 'Hatch', 'Sedan', 'SUV'];
+  const categories = [
+    { value: 'Todos', label: t('category.all') },
+    { value: 'Hatch', label: t('category.hatch') },
+    { value: 'Sedan', label: t('category.sedan') },
+    { value: 'SUV', label: t('category.suv') }
+  ];
   
   const filteredCars = cars.filter(car => {
     const matchesSearch = car.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -93,57 +94,57 @@ const Catalog = () => {
   });
   
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
       <Header />
       
-      <div className="container mx-auto px-4 py-8">
-        <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-gray-800 mb-4">
-            Nosso <span className="text-blue-600">Catálogo</span>
+      <div className="container mx-auto px-4 py-12">
+        <div className="text-center mb-12">
+          <h1 className="text-5xl font-bold text-gray-800 mb-6">
+            {t('catalog.title')} <span className="bg-gradient-to-r from-blue-600 to-blue-700 bg-clip-text text-transparent">{t('catalog.titleHighlight')}</span>
           </h1>
-          <p className="text-gray-600 text-lg">
-            Encontre o carro perfeito para sua viagem
+          <p className="text-gray-600 text-xl max-w-2xl mx-auto">
+            {t('catalog.subtitle')}
           </p>
         </div>
         
-        <div className="flex flex-col md:flex-row gap-4 mb-8">
+        <div className="flex flex-col md:flex-row gap-6 mb-12 max-w-4xl mx-auto">
           <div className="relative flex-1">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
+            <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
             <input
               type="text"
-              placeholder="Buscar por marca ou modelo..."
+              placeholder={t('catalog.search')}
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full pl-12 pr-4 py-4 border border-gray-200 rounded-2xl focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white/70 backdrop-blur-sm shadow-lg"
             />
           </div>
           
           <div className="relative">
-            <Filter className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
+            <Filter className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
             <select
               value={selectedCategory}
               onChange={(e) => setSelectedCategory(e.target.value)}
-              className="pl-10 pr-8 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white"
+              className="pl-12 pr-8 py-4 border border-gray-200 rounded-2xl focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white/70 backdrop-blur-sm shadow-lg"
             >
               {categories.map(category => (
-                <option key={category} value={category}>
-                  {category}
+                <option key={category.value} value={category.value}>
+                  {category.label}
                 </option>
               ))}
             </select>
           </div>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredCars.map(car => (
             <CarCard key={car.id} {...car} />
           ))}
         </div>
         
         {filteredCars.length === 0 && (
-          <div className="text-center py-12">
-            <p className="text-gray-500 text-lg">
-              Nenhum veículo encontrado com os filtros selecionados.
+          <div className="text-center py-16">
+            <p className="text-gray-500 text-xl">
+              {t('catalog.noResults')}
             </p>
           </div>
         )}
