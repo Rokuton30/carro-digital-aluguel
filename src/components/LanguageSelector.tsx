@@ -9,14 +9,14 @@ const LanguageSelector = () => {
 
   return (
     <div className="flex items-center gap-2">
-      <Globe className="h-4 w-4 text-gray-600" />
+      <Globe className="h-4 w-4 text-gray-400" />
       <Select value={language} onValueChange={(value: 'pt' | 'en') => setLanguage(value)}>
-        <SelectTrigger className="w-24 h-8 text-sm">
+        <SelectTrigger className="w-24 h-8 text-sm bg-gray-800 border-gray-600 text-gray-300 hover:bg-gray-700">
           <SelectValue />
         </SelectTrigger>
-        <SelectContent>
-          <SelectItem value="pt">PT</SelectItem>
-          <SelectItem value="en">EN</SelectItem>
+        <SelectContent className="bg-gray-800 border-gray-600">
+          <SelectItem value="pt" className="text-gray-300 hover:bg-gray-700">PT</SelectItem>
+          <SelectItem value="en" className="text-gray-300 hover:bg-gray-700">EN</SelectItem>
         </SelectContent>
       </Select>
     </div>

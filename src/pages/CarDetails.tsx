@@ -53,23 +53,23 @@ const CarDetails = () => {
   
   if (!car) {
     return (
-      <div className="min-h-screen bg-gray-50">
+      <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-black">
         <Header />
         <div className="container mx-auto px-4 py-8">
-          <p>Carro não encontrado</p>
+          <p className="text-white">Carro não encontrado</p>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-black">
       <Header />
       
       <div className="container mx-auto px-4 py-8">
         <Link 
           to="/catalog" 
-          className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-800 mb-6 transition-colors"
+          className="inline-flex items-center gap-2 text-amber-400 hover:text-amber-300 mb-6 transition-colors"
         >
           <ArrowLeft className="h-4 w-4" />
           Voltar ao catálogo
@@ -78,7 +78,7 @@ const CarDetails = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Image Gallery */}
           <div className="space-y-4">
-            <div className="aspect-video overflow-hidden rounded-2xl shadow-2xl">
+            <div className="aspect-video overflow-hidden rounded-2xl shadow-2xl border border-gray-700/50">
               <img 
                 src={car.image} 
                 alt={`${car.brand} ${car.name}`}
@@ -88,7 +88,7 @@ const CarDetails = () => {
             {car.gallery && car.gallery.length > 1 && (
               <div className="grid grid-cols-3 gap-4">
                 {car.gallery.slice(1).map((img, index) => (
-                  <div key={index} className="aspect-video overflow-hidden rounded-xl">
+                  <div key={index} className="aspect-video overflow-hidden rounded-xl border border-gray-700/50">
                     <img 
                       src={img} 
                       alt={`${car.brand} ${car.name} ${index + 2}`}
@@ -104,50 +104,50 @@ const CarDetails = () => {
           <div className="space-y-8">
             <div>
               <div className="flex items-center gap-3 mb-4">
-                <span className="bg-gradient-to-r from-blue-600 to-blue-700 text-white px-4 py-2 rounded-full text-sm font-medium">
+                <span className="bg-gradient-to-r from-amber-400 to-orange-500 text-black px-4 py-2 rounded-full text-sm font-medium">
                   {car.category}
                 </span>
-                <div className="flex items-center text-gray-600">
+                <div className="flex items-center text-gray-400">
                   <Calendar className="h-4 w-4 mr-1" />
                   <span>{t('car.year')}: {car.year}</span>
                 </div>
               </div>
-              <h1 className="text-4xl font-bold text-gray-800 mb-2">
+              <h1 className="text-4xl font-bold text-white mb-2">
                 {car.brand} {car.name}
               </h1>
             </div>
             
             {/* Specifications */}
-            <div className="bg-white rounded-2xl p-6 shadow-lg">
-              <h3 className="text-xl font-bold text-gray-800 mb-4">{t('car.features')}</h3>
+            <div className="bg-gradient-to-b from-gray-800 to-gray-900 rounded-2xl p-6 shadow-2xl border border-gray-700/50">
+              <h3 className="text-xl font-bold text-white mb-4">{t('car.features')}</h3>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
                 <div className="flex items-center gap-3">
-                  <div className="bg-blue-100 p-3 rounded-xl">
-                    <Users className="h-6 w-6 text-blue-600" />
+                  <div className="bg-gradient-to-r from-amber-400 to-orange-500 p-3 rounded-xl">
+                    <Users className="h-6 w-6 text-black" />
                   </div>
                   <div>
-                    <p className="text-sm text-gray-600">Passageiros</p>
-                    <p className="font-semibold">{car.passengers} {t('car.passengers')}</p>
+                    <p className="text-sm text-gray-400">Passageiros</p>
+                    <p className="font-semibold text-white">{car.passengers} {t('car.passengers')}</p>
                   </div>
                 </div>
                 
                 <div className="flex items-center gap-3">
-                  <div className="bg-green-100 p-3 rounded-xl">
-                    <Fuel className="h-6 w-6 text-green-600" />
+                  <div className="bg-gradient-to-r from-emerald-400 to-teal-500 p-3 rounded-xl">
+                    <Fuel className="h-6 w-6 text-black" />
                   </div>
                   <div>
-                    <p className="text-sm text-gray-600">Combustível</p>
-                    <p className="font-semibold">{car.fuel}</p>
+                    <p className="text-sm text-gray-400">Combustível</p>
+                    <p className="font-semibold text-white">{car.fuel}</p>
                   </div>
                 </div>
                 
                 <div className="flex items-center gap-3">
-                  <div className="bg-purple-100 p-3 rounded-xl">
-                    <Gauge className="h-6 w-6 text-purple-600" />
+                  <div className="bg-gradient-to-r from-purple-400 to-purple-500 p-3 rounded-xl">
+                    <Gauge className="h-6 w-6 text-black" />
                   </div>
                   <div>
-                    <p className="text-sm text-gray-600">Transmissão</p>
-                    <p className="font-semibold">{car.transmission}</p>
+                    <p className="text-sm text-gray-400">Transmissão</p>
+                    <p className="font-semibold text-white">{car.transmission}</p>
                   </div>
                 </div>
               </div>
@@ -155,13 +155,13 @@ const CarDetails = () => {
             
             {/* Features List */}
             {car.features && (
-              <div className="bg-white rounded-2xl p-6 shadow-lg">
-                <h3 className="text-xl font-bold text-gray-800 mb-4">Equipamentos</h3>
+              <div className="bg-gradient-to-b from-gray-800 to-gray-900 rounded-2xl p-6 shadow-2xl border border-gray-700/50">
+                <h3 className="text-xl font-bold text-white mb-4">Equipamentos</h3>
                 <div className="grid grid-cols-2 gap-3">
                   {car.features.map((feature, index) => (
                     <div key={index} className="flex items-center gap-2">
-                      <Star className="h-4 w-4 text-yellow-500" />
-                      <span className="text-gray-700">{feature}</span>
+                      <Star className="h-4 w-4 text-amber-400" />
+                      <span className="text-gray-300">{feature}</span>
                     </div>
                   ))}
                 </div>
@@ -170,19 +170,19 @@ const CarDetails = () => {
             
             {/* Description */}
             {car.description && (
-              <div className="bg-white rounded-2xl p-6 shadow-lg">
-                <h3 className="text-xl font-bold text-gray-800 mb-4">{t('car.description')}</h3>
-                <p className="text-gray-700 leading-relaxed">{car.description}</p>
+              <div className="bg-gradient-to-b from-gray-800 to-gray-900 rounded-2xl p-6 shadow-2xl border border-gray-700/50">
+                <h3 className="text-xl font-bold text-white mb-4">{t('car.description')}</h3>
+                <p className="text-gray-300 leading-relaxed">{car.description}</p>
               </div>
             )}
             
             {/* Contact Section */}
-            <div className="bg-gradient-to-r from-blue-600 to-blue-700 rounded-2xl p-6 text-white">
+            <div className="bg-gradient-to-r from-amber-400 via-orange-500 to-orange-600 rounded-2xl p-6 text-black shadow-2xl">
               <div className="flex items-center gap-3 mb-4">
                 <Shield className="h-6 w-6" />
                 <h3 className="text-xl font-bold">Garanta já o seu veículo!</h3>
               </div>
-              <p className="mb-6 text-blue-100">
+              <p className="mb-6 text-black/80">
                 Entre em contato conosco para verificar disponibilidade e solicitar seu orçamento personalizado.
               </p>
               <ContactButtons 

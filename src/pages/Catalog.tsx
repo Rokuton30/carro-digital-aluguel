@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import Header from '../components/Header';
 import CarCard from '../components/CarCard';
@@ -94,15 +93,15 @@ const Catalog = () => {
   });
   
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-black">
       <Header />
       
       <div className="container mx-auto px-4 py-12">
         <div className="text-center mb-12">
-          <h1 className="text-5xl font-bold text-gray-800 mb-6">
-            {t('catalog.title')} <span className="bg-gradient-to-r from-blue-600 to-blue-700 bg-clip-text text-transparent">{t('catalog.titleHighlight')}</span>
+          <h1 className="text-5xl font-bold text-white mb-6">
+            {t('catalog.title')} <span className="bg-gradient-to-r from-amber-400 to-orange-500 bg-clip-text text-transparent">{t('catalog.titleHighlight')}</span>
           </h1>
-          <p className="text-gray-600 text-xl max-w-2xl mx-auto">
+          <p className="text-gray-400 text-xl max-w-2xl mx-auto">
             {t('catalog.subtitle')}
           </p>
         </div>
@@ -115,7 +114,7 @@ const Catalog = () => {
               placeholder={t('catalog.search')}
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pl-12 pr-4 py-4 border border-gray-200 rounded-2xl focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white/70 backdrop-blur-sm shadow-lg"
+              className="w-full pl-12 pr-4 py-4 border border-gray-600 rounded-2xl focus:ring-2 focus:ring-amber-500 focus:border-transparent bg-gray-800/70 backdrop-blur-sm shadow-lg text-white placeholder-gray-400"
             />
           </div>
           
@@ -124,10 +123,10 @@ const Catalog = () => {
             <select
               value={selectedCategory}
               onChange={(e) => setSelectedCategory(e.target.value)}
-              className="pl-12 pr-8 py-4 border border-gray-200 rounded-2xl focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white/70 backdrop-blur-sm shadow-lg"
+              className="pl-12 pr-8 py-4 border border-gray-600 rounded-2xl focus:ring-2 focus:ring-amber-500 focus:border-transparent bg-gray-800/70 backdrop-blur-sm shadow-lg text-white"
             >
               {categories.map(category => (
-                <option key={category.value} value={category.value}>
+                <option key={category.value} value={category.value} className="bg-gray-800">
                   {category.label}
                 </option>
               ))}
@@ -143,7 +142,7 @@ const Catalog = () => {
         
         {filteredCars.length === 0 && (
           <div className="text-center py-16">
-            <p className="text-gray-500 text-xl">
+            <p className="text-gray-400 text-xl">
               {t('catalog.noResults')}
             </p>
           </div>
